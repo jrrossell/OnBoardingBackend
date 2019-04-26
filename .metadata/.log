@@ -294,3 +294,48 @@ Contains: Missing org.springframework.boot:spring-boot-starter-test:jar:javadoc:
 !MESSAGE Could not resolve artifact org.springframework.boot:spring-boot-starter-test:jar:javadoc:2.1.4.RELEASE
 !SUBENTRY 2 org.eclipse.m2e.core 4 -1 2019-04-26 11:56:16.815
 !MESSAGE Missing org.springframework.boot:spring-boot-starter-test:jar:javadoc:2.1.4.RELEASE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.136
+!MESSAGE Boot LS startup time from start to initialized: 6047ms
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.175
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.IdcojjNC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.181
+!MESSAGE subscribing to classpath changes: sts4.classpath.IdcojjNC
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.186
+!MESSAGE Setting up ClasspathListenerManager
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.191
+!MESSAGE subsribers = [sts4.classpath.IdcojjNC]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.197
+!MESSAGE Sending initial event for all projects ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.203
+!MESSAGE project peliculas ...
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.210
+!MESSAGE Sending initial event for all projects DONE
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.216
+!MESSAGE Preparing classpath changed notification peliculas
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.221
+!MESSAGE ClasspathListenerHandler addClasspathListener sts4.classpath.IdcojjNC => OK
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.226
+!MESSAGE exists = true open = true => deleted = false
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.234
+!MESSAGE classpath=60 entries
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.239
+!MESSAGE executing callback sts4.classpath.IdcojjNC peliculas false 60
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-04-26 12:08:23.304
+!MESSAGE executing callback sts4.classpath.IdcojjNC SUCCESS [done]
+
+!ENTRY org.eclipse.core.jobs 2 2 2019-04-26 14:47:40.471
+!MESSAGE Job found still running after platform shutdown.  Jobs should be canceled by the plugin that scheduled them during shutdown: org.springframework.tooling.ls.eclipse.commons.STS4LanguageServerProcessStreamConnector$1

@@ -1,0 +1,13 @@
+package com.ejercicio.peliculas.model;
+
+import java.util.Date;
+import java.util.List;
+
+public class Peliculas {
+	private String titulo;
+	private String genero;
+	private Date year;
+	private List<Actor> actores;
+	
+	
+}
