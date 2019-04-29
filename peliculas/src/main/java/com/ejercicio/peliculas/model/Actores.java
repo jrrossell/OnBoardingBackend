@@ -8,7 +8,6 @@ public class Actores {
 	private String apellido;
 	private int edad;
 
-	
 	public Actores(String nombre, String apellido, int edad) {
 		super();
 		this.nombre = nombre;

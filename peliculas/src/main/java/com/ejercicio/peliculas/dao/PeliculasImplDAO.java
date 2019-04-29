@@ -1,5 +1,7 @@
 package com.ejercicio.peliculas.dao;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -10,13 +12,15 @@ import org.springframework.stereotype.Repository;
 import com.ejercicio.peliculas.model.Peliculas;
 
 @Repository
-public class PeliculasImplDAO {
+public class PeliculasImplDAO implements PeliculasDAO{
 	
 	@PersistenceContext
 	private EntityManager entityManager;
+	ArrayList<Peliculas> pelis = new ArrayList<Peliculas>();
 	
 	public void insertar(Peliculas pelicula) {
-		entityManager.persist(pelicula);
+//		entityManager.persist(pelicula);
+		pelis.add(pelicula);
 	}
 	
 	public Peliculas buscar(int id) {	
@@ -24,7 +28,8 @@ public class PeliculasImplDAO {
 	}
 
 	public List<Peliculas> listar() {
-		String query = "select p from Peliculas p";
-		return entityManager.createQuery(query).getResultList();
+//		String query = "select p from Peliculas p";
+//		return entityManager.createQuery(query).getResultList();
+		return pelis;
 	}
 }

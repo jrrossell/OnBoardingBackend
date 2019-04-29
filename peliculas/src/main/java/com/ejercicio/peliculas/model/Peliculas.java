@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -16,6 +17,7 @@ public class Peliculas {
 	private String titulo;
 	private String genero;
 	private String year;
+	@Autowired
 	private List<Actores> actores;
 
 	

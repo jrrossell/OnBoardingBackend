@@ -5,12 +5,13 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.ejercicio.peliculas.dao.PeliculasDAO;
+import com.ejercicio.peliculas.dao.PeliculasImplDAO;
 import com.ejercicio.peliculas.model.Peliculas;
 
 @Service
 public class GestionPeliculas {
 	
-	private PeliculasDAO peliculaDao;
+	private PeliculasDAO peliculaDao = new PeliculasImplDAO();
 	
 	public PeliculasDAO getPeliculaDao() {
 		return peliculaDao;
@@ -22,6 +23,7 @@ public class GestionPeliculas {
 	
 	public void insertar(Peliculas pelicula) {
 		System.out.println(pelicula);
+		System.out.println(peliculaDao);
 		peliculaDao.insertar(pelicula);
 	}
 	
