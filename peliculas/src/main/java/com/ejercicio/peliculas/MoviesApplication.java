@@ -49,7 +49,7 @@ public class MoviesApplication {
 		movie2.setId(2);
 		movie2.setTittle("Capitan America");
 		movie2.setGender("Accion");
-		movie2.setYear("2017");
+		movie2.setYear("2013");
 		movie2.setActors(actors);
 		
 		ManageMovies business = context.getBean(ManageMovies.class);
@@ -62,7 +62,7 @@ public class MoviesApplication {
 		System.out.println("-- List of Movies --");
 		List<Movies> listadoPelis = business.list();
 		for (Movies peli : listadoPelis) {
-			System.out.println(peli.getId() + ") " + peli.getTittle() + " - " + peli.getYear());
+			System.out.println(peli.getTittle() + " - " + peli.getYear());
 		}
 		
 		System.out.println();
@@ -70,6 +70,7 @@ public class MoviesApplication {
 		System.out.println("-- Data of the Movie " + nombrePeli + " --");
 		Movies peli = business.find(nombrePeli);
 		System.out.println("Tittle: " + peli.getTittle() + "\nGender: " + peli.getGender() + "\nYear: " + peli.getYear() + "\nActors: " + peli.getActors());
-	}
+	
+	}	
 
 }
