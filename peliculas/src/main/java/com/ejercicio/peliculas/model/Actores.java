@@ -8,19 +8,6 @@ public class Actores {
 	private String apellido;
 	private int edad;
 
-	
-	public Actores(String nombre, String apellido, int edad) {
-		super();
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.edad = edad;
-	}
-
-	public Actores() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-
 	public String getNombre() {
 		return nombre;
 	}
