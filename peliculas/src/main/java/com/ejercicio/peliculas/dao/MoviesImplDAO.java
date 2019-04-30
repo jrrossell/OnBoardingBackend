@@ -8,25 +8,31 @@ import javax.persistence.PersistenceContext;
 
 import org.springframework.stereotype.Repository;
 
-import com.ejercicio.peliculas.model.Peliculas;
+import com.ejercicio.peliculas.model.Movies;
 
 @Repository
-public class PeliculasImplDAO implements PeliculasDAO {
+public class MoviesImplDAO implements MoviesDAO {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
-	ArrayList<Peliculas> pelis = new ArrayList<Peliculas>();
+	ArrayList<Movies> pelis = new ArrayList<Movies>();
 	
-	public void insertar(Peliculas pelicula) {
+	public void insert(Movies movie) {
 //		entityManager.persist(pelicula);
-		pelis.add(pelicula);
+		pelis.add(movie);
 	}
 	
-	public Peliculas buscar(int id) {	
-		return entityManager.find(Peliculas.class, id);
+	public Movies find(String tittle) {	
+//		return entityManager.find(Peliculas.class, id);
+		for (Movies peliculaRecorrer : pelis) {
+			if (peliculaRecorrer.getTittle().equals(tittle)) {
+				return peliculaRecorrer;
+			}
+		}
+		return null;
 	}
 
-	public List<Peliculas> listar() {
+	public List<Movies> list() {
 //		String query = "select p from Peliculas p";
 //		return entityManager.createQuery(query).getResultList();
 		return pelis;
