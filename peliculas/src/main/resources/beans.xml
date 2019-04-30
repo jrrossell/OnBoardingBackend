@@ -11,5 +11,10 @@
 
 	<context:component-scan base-package="com.ejercicio.peliculas.model" />
 	<context:component-scan base-package="com.ejercicio.peliculas.dao" />
+<<<<<<< HEAD
 	<context:component-scan base-package="com.ejercicio.peliculas.business" />
+=======
+	<context:component-scan base-package="com.ejercicio.peliculas.negocio" />
+	<context:component-scan base-package="com.ejercicio.peliculas" />
+>>>>>>> 65a19c94da4dce5bf187a150e96108f2c7c5ddc4
 </beans>
