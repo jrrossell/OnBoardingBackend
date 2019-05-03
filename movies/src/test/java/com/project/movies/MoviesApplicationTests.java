@@ -1,4 +1,4 @@
-package com.project.movies.movies;
+package com.project.movies;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -3,11 +3,12 @@ package com.ejercicio.peliculas;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.ejercicio.peliculas.business.ManageMovies;
+import com.ejercicio.peliculas.controller.ManageMovies;
 import com.ejercicio.peliculas.model.Actors;
 import com.ejercicio.peliculas.model.Movies;
 
@@ -22,7 +23,7 @@ public class MoviesApplication {
 	}
 	
 	public static void main(String[] args) {
-		//SpringApplication.run(PeliculasApplication.class, args);
+		SpringApplication.run(MoviesApplication.class, args);
 		
 		Actors actor1 = context.getBean(Actors.class);
 		actor1.setFirstName("Junior");

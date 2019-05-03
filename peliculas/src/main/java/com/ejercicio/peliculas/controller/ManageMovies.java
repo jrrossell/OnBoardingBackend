@@ -1,4 +1,4 @@
-package com.ejercicio.peliculas.business;
+package com.ejercicio.peliculas.controller;
 
 import java.util.List;
 

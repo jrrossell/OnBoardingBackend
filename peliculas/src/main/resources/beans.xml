@@ -11,5 +11,5 @@
 
 	<context:component-scan base-package="com.ejercicio.peliculas.model" />
 	<context:component-scan base-package="com.ejercicio.peliculas.dao" />
-	<context:component-scan base-package="com.ejercicio.peliculas.business" />
+	<context:component-scan base-package="com.ejercicio.peliculas.controller" />
 </beans>
