@@ -19,13 +19,13 @@ public class ConfigMovies {
 	@Bean
 	public CommandLineRunner iniciarBaseDeDatos(MoviesRepository repository, ActorsRepository repositoryActors) {
 		return args -> {
-			repository.save(new Movies(1, "Capitan America", "Accion", "2010", "Pepito"));
-			repository.save(new Movies(2, "Hulk", "Ciencia Ficcion", "2011", "Hombre verde"));
-			repository.save(new Movies(3, "Thor", "Accion", "2013", "Martillo"));
+			repository.save(new Movies(1, "Capitan America", "Accion", "2010", "Juan - Pedro - Jose"));
+			repository.save(new Movies(2, "Hulk", "Ciencia Ficcion", "2011", "Raul - Junior"));
+			repository.save(new Movies(3, "Thor", "Accion", "2013", "Jose - Paco"));
 			
-			repositoryActors.save(new Actors(1, 1, "Junior"));
-			repositoryActors.save(new Actors(2, 2, "Manuel"));
-			repositoryActors.save(new Actors(3, 1, "Jaimito"));
+			repositoryActors.save(new Actors(1, 1, "Juan"));
+			repositoryActors.save(new Actors(2, 2, "Raul"));
+			repositoryActors.save(new Actors(3, 1, "Pedro"));
 			
 			List<Movies> movies = repository.findAll();
 			List<Actors> actors = repositoryActors.findAll();
