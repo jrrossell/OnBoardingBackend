@@ -2,13 +2,13 @@ package com.project.movies.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 
 import com.project.movies.model.Movies;
 import com.project.movies.model.MoviesRepository;
 
 
-@RestController
+@Service
 public class ControllerMovies {
 	private final MoviesRepository repository;
 	

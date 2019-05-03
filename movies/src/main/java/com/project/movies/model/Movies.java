@@ -71,7 +71,7 @@ public class Movies {
 
 	@Override
 	public String toString() {
-		return "Movies [id=" + id + ", tittle=" + tittle + ", gender=" + gender + ", year=" + year + ", actors="
+		return "Movies [id=" + id + "\n, tittle=" + tittle + "\n, gender=" + gender + "\n, year=" + year + "\n, actors="
 				+ actors + "]";
 	}
 
