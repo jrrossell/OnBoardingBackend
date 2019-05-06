@@ -1,14 +1,20 @@
 package com.project.movies.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.project.movies.model.Movies;
 import com.project.movies.model.MoviesRepository;
 
 
-@Service
+@RestController
 public class ControllerMovies {
 	private final MoviesRepository repository;
 	
@@ -16,20 +22,29 @@ public class ControllerMovies {
 		this.repository = repository;
 	}
 	
-	public List<Movies> movies(){
-		return repository.findAll();
+	@GetMapping("/movies")
+	public List<String> movies(){
+		List<Movies> movies = repository.findAll();
+		List<String> moviesEnviar = new ArrayList<String>();
+		for (Movies movie : movies) {
+			moviesEnviar.add("Tittle: " + movie.getTittle() + " - Year: " + movie.getYear());
+		}
+		return moviesEnviar;
 	}
-
-	public Movies movie(Integer id) {
+	
+	@GetMapping("/movies/{id}")
+	public Movies movie(@PathVariable Integer id) {
 		return repository.findById(id)
 				.orElse(null);
 	}
 	
-	public Movies newMovie(Movies movie) {
+	@PostMapping("/movies")
+	public Movies newMovie(@RequestBody Movies movie) {
 		return repository.save(movie);
 	}
 	
-	public void deleteMovie(Integer id) {
+	@DeleteMapping("/movies/{id}")
+	public void deleteMovie(@PathVariable Integer id) {
 		repository.deleteById(id);
 	}
 }

@@ -10,14 +10,12 @@ public class Actors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idActor;
-	private int codMovie;
 	private String firstName;
 	
 	
-	public Actors(int idActor, int codMovie, String firstName) {
+	public Actors(int idActor, String firstName) {
 		super();
 		this.idActor = idActor;
-		this.codMovie = codMovie;
 		this.firstName = firstName;
 	}
 
@@ -42,17 +40,9 @@ public class Actors {
 		this.idActor = idActor;
 	}
 
-	public int getCodMovie() {
-		return codMovie;
-	}
-
-	public void setCodMovie(int codMovie) {
-		this.codMovie = codMovie;
-	}
-
 	@Override
 	public String toString() {
-		return "Actors [idActor=" + idActor + ", codMovie=" + codMovie + ", firstName=" + firstName + "]";
+		return "[idActor=" + idActor + ", firstName=" + firstName + "]";
 	}
 
 
