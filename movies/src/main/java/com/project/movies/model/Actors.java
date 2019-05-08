@@ -1,27 +1,33 @@
 package com.project.movies.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="actors")
 public class Actors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idActor;
 	private String firstName;
-	
-	
-	public Actors(int idActor, String firstName) {
-		super();
-		this.idActor = idActor;
-		this.firstName = firstName;
-	}
+	private String surname;
+	@ManyToMany(mappedBy = "actors")
+    private List<Movies> movies;
 
 	public Actors() {
 		super();
-		// TODO Auto-generated constructor stub
+	}
+	
+	public Actors(String firstName, String surname) {
+		super();
+		this.firstName = firstName;
+		this.surname = surname;
 	}
 
 	public String getFirstName() {
@@ -40,11 +46,17 @@ public class Actors {
 		this.idActor = idActor;
 	}
 
-	@Override
-	public String toString() {
-		return "[idActor=" + idActor + ", firstName=" + firstName + "]";
+	public String getSurname() {
+		return surname;
 	}
 
+	public void setSurname(String surname) {
+		this.surname = surname;
+	}
 
+	@Override
+	public String toString() {
+		return "Actors [idActor=" + idActor + ", firstName=" + firstName + ", surname=" + surname + "]";
+	}
 
 }

@@ -1,40 +1,53 @@
 package com.project.movies.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="movies")
 public class Movies {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private int idMovie;
 	private String tittle;
 	private String gender;
 	private String year;
-	private String actors;
-
+	@JoinTable(
+	        name = "rel_movies_actors",
+	        joinColumns = @JoinColumn(name = "FK_MOVIES", nullable = false),
+	        inverseJoinColumns = @JoinColumn(name="FK_ACTORS", nullable = false)
+	    )
+	@ManyToMany(cascade = CascadeType.ALL)
+	private List<Actors> actors;
+	
 	public Movies() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Movies(int id, String tittle, String gender, String year, String actors) {
+	public Movies(String tittle, String gender, String year, List<Actors> actors) {
 		super();
-		this.id = id;
 		this.tittle = tittle;
 		this.gender = gender;
 		this.year = year;
 		this.actors = actors;
 	}
 
-	public int getId() {
-		return id;
+	public int getIdMovie() {
+		return idMovie;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setIdMovie(int idMovie) {
+		this.idMovie = idMovie;
 	}
 	
 	public String getTittle() {
@@ -61,18 +74,17 @@ public class Movies {
 		this.year = year;
 	}
 
-	public String getActors() {
+	public List<Actors> getActors() {
 		return actors;
 	}
 
-	public void setActors(String actors) {
-		this.actors = actors;
+	public void setActors(List<Actors> actors) {
+        this.actors = actors;
 	}
 
 	@Override
 	public String toString() {
-		return "Movies [Id=" + id + "\n Tittle=" + tittle + "\n Gender=" + gender + "\n Year=" + year + "\n Actors="
+		return "Movies [Id=" + idMovie + "\n Tittle=" + tittle + "\n Gender=" + gender + "\n Year=" + year + "\n Actors="
 				+ actors + "]";
 	}
-
 }
