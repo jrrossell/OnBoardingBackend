@@ -2,7 +2,7 @@ package com.project.movies.model;
 
 import java.util.List;
 
-import javax.persistence.CascadeType;
+//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,12 +26,12 @@ public class Movies {
 	        joinColumns = @JoinColumn(name = "FK_MOVIES", nullable = false),
 	        inverseJoinColumns = @JoinColumn(name="FK_ACTORS", nullable = false)
 	    )
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
+	//(cascade = CascadeType.ALL)
 	private List<Actors> actors;
 	
 	public Movies() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Movies(String tittle, String gender, String year, List<Actors> actors) {

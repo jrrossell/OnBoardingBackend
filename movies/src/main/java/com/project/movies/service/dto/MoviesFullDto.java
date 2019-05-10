@@ -3,8 +3,6 @@ package com.project.movies.service.dto;
 import java.io.Serializable;
 import java.util.List;
 
-import com.project.movies.model.Actors;
-
 public class MoviesFullDto implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -12,18 +10,18 @@ public class MoviesFullDto implements Serializable {
 	private String tittle;
 	private String gender;
 	private String year;
-	private List<Actors> actors;
+	private List<ActorsFullDto> actors;
 	
-	public List<Actors> getActors() {
+	public MoviesFullDto() {
+		super();
+	}
+	
+	public List<ActorsFullDto> getActors() {
 		return actors;
 	}
 
-	public void setActors(List<Actors> actors) {
+	public void setActors(List<ActorsFullDto> actors) {
 		this.actors = actors;
-	}
-
-	public MoviesFullDto() {
-		super();
 	}
 
 	public int getIdMovie() {
