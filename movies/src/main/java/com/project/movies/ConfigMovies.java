@@ -21,8 +21,8 @@ public class ConfigMovies {
 	public CommandLineRunner iniciarDatos(MoviesRepository repository, ActorsRepository repositoryActors) {
 		return args -> {
 			
-			Actors actor1 = new Actors("Actor N1", "Apellido N1");
-			Actors actor2 = new Actors("Actor N2", "Apellido N2");
+			Actors actor1 = new Actors("Chris", "Evans");
+			Actors actor2 = new Actors("Don", "Cheadle");
 			repositoryActors.save(actor1);
 			repositoryActors.save(actor2);
 			
@@ -30,10 +30,10 @@ public class ConfigMovies {
 			actores.add(actor1);
 			actores.add(actor2);
 			
-			Movies movie1 = new Movies("Capitan America", "Accion", "2010",actores);
+			Movies movie1 = new Movies("Capitan America", "Accion", "2010", actores);
 			
-			Actors actor3 = new Actors("Actor N3", "Apellido N3"); 
-			Actors actor4 = new Actors("Actor N4", "Apellido N4");
+			Actors actor3 = new Actors("Mark", "Ruffalo"); 
+			Actors actor4 = new Actors("Edward", "Norton");
 			repositoryActors.save(actor3);
 			repositoryActors.save(actor4);
 			

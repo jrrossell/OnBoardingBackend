@@ -87,4 +87,38 @@ public class Movies {
 		return "Movies [Id=" + idMovie + "\n Tittle=" + tittle + "\n Gender=" + gender + "\n Year=" + year + "\n Actors="
 				+ actors + "]";
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Movies other = (Movies) obj;
+		if (actors == null) {
+			if (other.actors != null)
+				return false;
+		} else if (!actors.equals(other.actors))
+			return false;
+		if (gender == null) {
+			if (other.gender != null)
+				return false;
+		} else if (!gender.equals(other.gender))
+			return false;
+		if (tittle == null) {
+			if (other.tittle != null)
+				return false;
+		} else if (!tittle.equals(other.tittle))
+			return false;
+		if (year == null) {
+			if (other.year != null)
+				return false;
+		} else if (!year.equals(other.year))
+			return false;
+		return true;
+	}
+	
+	
 }
