@@ -1,8 +1,7 @@
-package com.project.movies.model;
+package com.project.movies.model.entity;
 
 import java.util.List;
 
-//import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,15 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="movies")
 public class Movies {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idMovie;
-	private String tittle;
+	private int id;
+	private String title;
 	private String gender;
 	private String year;
 	@JoinTable(
@@ -27,35 +24,36 @@ public class Movies {
 	        inverseJoinColumns = @JoinColumn(name="FK_ACTORS", nullable = false)
 	    )
 	@ManyToMany
-	//(cascade = CascadeType.ALL)
 	private List<Actors> actors;
 	
+	//Si no se utiliza el constructor, no se coloca
+	//utilizar builder
 	public Movies() {
 		super();
 	}
 
-	public Movies(String tittle, String gender, String year, List<Actors> actors) {
+	public Movies(String title, String gender, String year, List<Actors> actors) {
 		super();
-		this.tittle = tittle;
+		this.title = title;
 		this.gender = gender;
 		this.year = year;
 		this.actors = actors;
 	}
 
-	public int getIdMovie() {
-		return idMovie;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdMovie(int idMovie) {
-		this.idMovie = idMovie;
+	public void setId(int id) {
+		this.id = id;
 	}
 	
-	public String getTittle() {
-		return tittle;
+	public String getTitle() {
+		return title;
 	}
 
-	public void setTittle(String tittle) {
-		this.tittle = tittle;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 	public String getGender() {
@@ -83,12 +81,6 @@ public class Movies {
 	}
 
 	@Override
-	public String toString() {
-		return "Movies [Id=" + idMovie + "\n Tittle=" + tittle + "\n Gender=" + gender + "\n Year=" + year + "\n Actors="
-				+ actors + "]";
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -107,10 +99,10 @@ public class Movies {
 				return false;
 		} else if (!gender.equals(other.gender))
 			return false;
-		if (tittle == null) {
-			if (other.tittle != null)
+		if (title == null) {
+			if (other.title != null)
 				return false;
-		} else if (!tittle.equals(other.tittle))
+		} else if (!title.equals(other.title))
 			return false;
 		if (year == null) {
 			if (other.year != null)
@@ -119,6 +111,4 @@ public class Movies {
 			return false;
 		return true;
 	}
-	
-	
 }

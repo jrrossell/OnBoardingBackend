@@ -13,19 +13,19 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import com.project.movies.model.Actors;
-import com.project.movies.model.ActorsRepository;
-import com.project.movies.model.Movies;
-import com.project.movies.model.MoviesRepository;
-import com.project.movies.service.ServiceMovies;
-import com.project.movies.service.dto.MoviesDto;
-import com.project.movies.service.dto.MoviesFullDto;
+import com.project.movies.model.entity.Actors;
+import com.project.movies.model.entity.Movies;
+import com.project.movies.model.repository.ActorsRepository;
+import com.project.movies.model.repository.MoviesRepository;
+import com.project.movies.service.MoviesServiceImpl;
+import com.project.movies.dto.MoviesTitleYearDto;
+import com.project.movies.dto.MoviesFullDto;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestService {
 	
 	@InjectMocks
-	ServiceMovies serviceMovies;
+	MoviesServiceImpl serviceMovies;
 	
 	@Mock
 	MoviesRepository moviesRepository;
@@ -39,11 +39,12 @@ public class TestService {
 
 		when(moviesRepository.save(movie)).thenReturn(movie);
 		
-		Movies testMovie = serviceMovies.newMovie(movie);
+		Movies testMovie = serviceMovies.addMovie(movie);
 		
 		assertTrue("No se ha creado la pelicula", movie.equals(testMovie));
 	}
 	
+	//revisar
 	@Test
 	public void testNewMovieRepeat() {
 		Movies movie = new Movies("Los Vengadores", "Accion", "2019", new ArrayList<>());
@@ -51,7 +52,7 @@ public class TestService {
 		
 		when(moviesRepository.save(movie)).thenReturn(movie);
 		
-		Movies testMovie = serviceMovies.newMovie(movie2);
+		Movies testMovie = serviceMovies.addMovie(movie2);
 
 		assertTrue("No se ha creado la pelicula", testMovie.equals(movie));
 	}
@@ -62,7 +63,7 @@ public class TestService {
 
 		when(moviesRepository.findById(1)).thenReturn(movieNull);
 
-		MoviesFullDto movieDtoNull = serviceMovies.movie(1);
+		MoviesFullDto movieDtoNull = serviceMovies.showMovie(1);
 
 		assertTrue("No existe la pelicula", movieDtoNull == null);
 	}
@@ -73,15 +74,16 @@ public class TestService {
 		
 		when(moviesRepository.findById(1)).thenReturn(movie);
 		
-		MoviesFullDto movieDto = serviceMovies.movie(1);
+		MoviesFullDto movieDto = serviceMovies.showMovie(1);
 		
+		//comparar con movieDto y movie
 		MoviesFullDto movieDtoTest = new MoviesFullDto();
-		movieDtoTest.setTittle("Los Vengadores");
+		movieDtoTest.setTitle("Los Vengadores");
 		movieDtoTest.setGender("Accion");
 		movieDtoTest.setYear("2019");
 		movieDtoTest.setActors(new ArrayList<>());
 		
-		assertTrue("No existe la pelicula", movieDto.getTittle() == movieDtoTest.getTittle() 
+		assertTrue("No existe la pelicula", movieDto.getTitle() == movieDtoTest.getTitle() 
 											&& movieDto.getGender() == movieDtoTest.getGender() 
 											&& movieDto.getYear() == movieDtoTest.getYear());
 	}
@@ -97,7 +99,7 @@ public class TestService {
 		
 		when(moviesRepository.findAll()).thenReturn(listMovies);
 		
-		List<MoviesDto> moviesDto = serviceMovies.movies();
+		List<MoviesTitleYearDto> moviesDto = serviceMovies.listMovies();
 		
 		assertTrue("No existe la pelicula", listMovies.size() == moviesDto.size());
 	}
@@ -108,7 +110,7 @@ public class TestService {
 
 		when(moviesRepository.findAll()).thenReturn(listMovies);
 		
-		List<MoviesDto> moviesDto = serviceMovies.movies();
+		List<MoviesTitleYearDto> moviesDto = serviceMovies.listMovies();
 
 		assertTrue("No existe la pelicula", moviesDto == null);
 	}
@@ -124,7 +126,7 @@ public class TestService {
 		
 		when(actorsRepository.findAll()).thenReturn(listActors);
 		
-		Actors actorService = serviceMovies.findActor(actor);
+		Actors actorService = serviceMovies.verifyActor(actor);
 		
 		assertTrue("No existe la pelicula", actor.equals(actorService));
 	}

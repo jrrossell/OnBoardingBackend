@@ -1,4 +1,4 @@
-package com.project.movies.model;
+package com.project.movies.model.entity;
 
 import java.util.List;
 
@@ -7,15 +7,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="actors")
 public class Actors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int idActor;
-	
+	private int id;
 	private String firstName;
 	private String surname;
 	@ManyToMany(mappedBy = "actors")
@@ -39,12 +36,12 @@ public class Actors {
 		this.firstName = firstName;
 	}
 
-	public int getIdActor() {
-		return idActor;
+	public int getId() {
+		return id;
 	}
 
-	public void setIdActor(int idActor) {
-		this.idActor = idActor;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getSurname() {
@@ -57,7 +54,7 @@ public class Actors {
 
 	@Override
 	public String toString() {
-		return "Actors [idActor=" + idActor + ", firstName=" + firstName + ", surname=" + surname + "]";
+		return "Actors [idActor=" + id + ", firstName=" + firstName + ", surname=" + surname + "]";
 	}
 
 	@Override

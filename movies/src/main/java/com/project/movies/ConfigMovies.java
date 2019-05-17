@@ -8,10 +8,10 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import com.project.movies.model.Actors;
-import com.project.movies.model.ActorsRepository;
-import com.project.movies.model.Movies;
-import com.project.movies.model.MoviesRepository;
+import com.project.movies.model.entity.Actors;
+import com.project.movies.model.entity.Movies;
+import com.project.movies.model.repository.ActorsRepository;
+import com.project.movies.model.repository.MoviesRepository;
 
 
 @Configuration
