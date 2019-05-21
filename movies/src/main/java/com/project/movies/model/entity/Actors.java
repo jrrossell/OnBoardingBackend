@@ -8,32 +8,32 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.project.movies.model.builder.ActorsBuilder;
+
 @Entity
 public class Actors {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	private String firstName;
+	private String firstname;
 	private String surname;
 	@ManyToMany(mappedBy = "actors")
     private List<Movies> movies;
 
 	public Actors() {
-		super();
 	}
 	
-	public Actors(String firstName, String surname) {
-		super();
-		this.firstName = firstName;
-		this.surname = surname;
+	public Actors(ActorsBuilder builder) {
+        this.firstname = builder.getFirstname();
+        this.surname = builder.getSurname();
 	}
 
 	public String getFirstName() {
-		return firstName;
+		return firstname;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 
 	public int getId() {
@@ -53,11 +53,6 @@ public class Actors {
 	}
 
 	@Override
-	public String toString() {
-		return "Actors [idActor=" + id + ", firstName=" + firstName + ", surname=" + surname + "]";
-	}
-
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
@@ -66,10 +61,10 @@ public class Actors {
 		if (getClass() != obj.getClass())
 			return false;
 		Actors other = (Actors) obj;
-		if (firstName == null) {
-			if (other.firstName != null)
+		if (firstname == null) {
+			if (other.firstname != null)
 				return false;
-		} else if (!firstName.equals(other.firstName))
+		} else if (!firstname.equals(other.firstname))
 			return false;
 		if (surname == null) {
 			if (other.surname != null)

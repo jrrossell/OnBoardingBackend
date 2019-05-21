@@ -1,15 +1,15 @@
-package com.project.movies.service;
+package com.project.movies.controller;
 
 import java.sql.SQLException;
 import java.util.List;
 
+import com.project.movies.dto.MoviesFullDto;
 import com.project.movies.dto.MoviesTitleYearDto;
 import com.project.movies.exceptions.MovieNotFound;
 import com.project.movies.exceptions.MovieRepeat;
-import com.project.movies.dto.MoviesFullDto;
 import com.project.movies.model.entity.Movies;
 
-public interface MoviesService {
+public interface MoviesController {
 	List<MoviesTitleYearDto> listMovies();
 	
 	MoviesFullDto showMovie(Integer id) throws MovieNotFound;
