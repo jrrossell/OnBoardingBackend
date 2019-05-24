@@ -15,7 +15,6 @@ import com.project.movies.model.entity.Movies;
 import com.project.movies.model.repository.ActorsRepository;
 import com.project.movies.model.repository.MoviesRepository;
 
-
 @Configuration
 public class ConfigMovies {
 	

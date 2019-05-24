@@ -28,7 +28,7 @@ import com.project.movies.dto.MoviesFullDto;
 public class TestService {
 	
 	@InjectMocks
-	MoviesServiceImpl serviceMovies;
+	MoviesServiceImpl moviesService;
 	
 	@Mock
 	MoviesRepository moviesRepository;
@@ -40,14 +40,14 @@ public class TestService {
 	public void testNewMovie() throws MovieRepeat {
 		Movies movie = new MoviesBuilder()
 				.title("Los Vengadores")
-				.gender("Accion")
+				.gender("Accion") 
 				.year("2019")
 				.actors(new ArrayList<>())
 				.build();
 
 		when(moviesRepository.save(movie)).thenReturn(movie);
 		
-		Movies testMovie = serviceMovies.addMovie(movie);
+		Movies testMovie = moviesService.addMovie(movie);
 		
 		assertTrue("No se ha creado la pelicula", movie.equals(testMovie));
 	}
@@ -61,17 +61,24 @@ public class TestService {
 				.actors(new ArrayList<>())
 				.build();
 		
-		when(moviesRepository.save(movie1)).thenReturn(movie1);
+		Movies movie2 = new MoviesBuilder()
+				.title("Los Vengadores")
+				.gender("Accion")
+				.year("2019")
+				.actors(new ArrayList<>())
+				.build();
 		
-		Movies testMovie1 = serviceMovies.addMovie(movie1);
+		when(moviesRepository.save(movie1)).thenReturn(movie1);
+		Movies testMovie1 = moviesService.addMovie(movie1);
+		
+		when(moviesRepository.findMovieBD(movie2.getTitle(), movie2.getYear())).thenReturn(movie1);
 		Movies testMovie2;
 		try {
-			testMovie2 = serviceMovies.addMovie(movie1);
-		}catch (MovieRepeat mr) {
+			testMovie2 = moviesService.addMovie(movie2);
+		}catch (MovieRepeat m) {
 			testMovie2 = null;
 		}
-		System.out.println(testMovie1.getId());
-		System.out.println(testMovie2.getId());
+		
 		assertTrue("Las peliculas son iguales", testMovie1.equals(movie1) && testMovie2 == null);
 	}
 	
@@ -83,7 +90,7 @@ public class TestService {
 		
 		MoviesFullDto movieDtoNull;
 		try {
-			movieDtoNull = serviceMovies.showMovie(1);
+			movieDtoNull = moviesService.showMovie(1);
 		}catch (MovieNotFound m) {
 			movieDtoNull = null;
 		}
@@ -102,7 +109,7 @@ public class TestService {
 		
 		when(moviesRepository.findById(1)).thenReturn(Optional.of(movie));
 		
-		MoviesFullDto movieDto = serviceMovies.showMovie(1);
+		MoviesFullDto movieDto = moviesService.showMovie(1);
 		Movies mov = TransformMovies.movieFullDtoToMovie(movieDto);
 		
 		assertTrue("No se guardo la pelicula", movie.equals(mov));
@@ -129,7 +136,7 @@ public class TestService {
 		
 		when(moviesRepository.findAll()).thenReturn(listMovies);
 		
-		List<MoviesTitleYearDto> moviesDto = serviceMovies.listMovies();
+		List<MoviesTitleYearDto> moviesDto = moviesService.listMovies();
 		
 		assertTrue("Lista de peliculas nula", listMovies.size() == moviesDto.size());
 	}
@@ -140,7 +147,7 @@ public class TestService {
 
 		when(moviesRepository.findAll()).thenReturn(listMovies);
 		
-		List<MoviesTitleYearDto> moviesDto = serviceMovies.listMovies();
+		List<MoviesTitleYearDto> moviesDto = moviesService.listMovies();
 
 		assertTrue("Lista de peliculas no es null", moviesDto.size() == listMovies.size());
 	}

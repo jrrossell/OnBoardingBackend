@@ -1,6 +1,5 @@
 package com.project.movies.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,33 +15,33 @@ import com.project.movies.exceptions.MovieNotFound;
 import com.project.movies.exceptions.MovieRepeat;
 import com.project.movies.dto.MoviesFullDto;
 import com.project.movies.model.entity.Movies;
-import com.project.movies.service.MoviesServiceImpl;
+import com.project.movies.service.MoviesService;
 
 @RestController
 public class MoviesControllerImpl implements MoviesController {
-	private final MoviesServiceImpl moviesService;
+	private final MoviesService moviesService;
 	
 	@Autowired
-	public MoviesControllerImpl(MoviesServiceImpl service) {
+	public MoviesControllerImpl(MoviesService service) {
 		this.moviesService = service;
 	}
 
-	@GetMapping("/movies")
+	@GetMapping("/movie")
 	public List<MoviesTitleYearDto> listMovies(){
 		return moviesService.listMovies();
 	}
 
-	@GetMapping("/movies/{id}")
+	@GetMapping("/movie/{id}")
 	public MoviesFullDto showMovie(@PathVariable Integer id) throws MovieNotFound {
 		return moviesService.showMovie(id);
 	}
 
-	@PostMapping("/movies")
-	public Movies addMovie(@RequestBody Movies movie) throws MovieRepeat, SQLException {
+	@PostMapping("/movie")
+	public Movies addMovie(@RequestBody Movies movie) throws MovieRepeat {
 		return moviesService.addMovie(movie);
 	}
 
-	@DeleteMapping("/movies/{id}")
+	@DeleteMapping("/movie/{id}")
 	public void deleteMovie(@PathVariable Integer id) {
 		moviesService.deleteMovie(id);
 	}

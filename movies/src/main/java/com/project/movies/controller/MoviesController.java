@@ -1,6 +1,5 @@
 package com.project.movies.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import com.project.movies.dto.MoviesFullDto;
@@ -14,7 +13,7 @@ public interface MoviesController {
 	
 	MoviesFullDto showMovie(Integer id) throws MovieNotFound;
 	
-	Movies addMovie(Movies movie) throws MovieRepeat, SQLException;
+	Movies addMovie(Movies movie) throws MovieRepeat;
 	
 	void deleteMovie(Integer id);
 }

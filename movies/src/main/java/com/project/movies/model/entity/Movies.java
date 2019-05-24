@@ -10,8 +10,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 
-import com.project.movies.model.builder.MoviesBuilder;
-
 @Entity
 public class Movies {
 	@Id
@@ -27,17 +25,7 @@ public class Movies {
 	    )
 	@ManyToMany
 	private List<Actors> actors;
-
-	public Movies() {
-	}
-
-	public Movies(MoviesBuilder builder) {
-        this.title = builder.getTitle();
-        this.gender = builder.getGender();
-        this.year = builder.getYear();
-        this.actors = builder.getActors();
-	}
-	    
+ 
 	public int getId() {
 		return id;
 	}

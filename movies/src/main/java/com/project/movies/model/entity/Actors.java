@@ -1,14 +1,9 @@
 package com.project.movies.model.entity;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-
-import com.project.movies.model.builder.ActorsBuilder;
 
 @Entity
 public class Actors {
@@ -17,16 +12,6 @@ public class Actors {
 	private int id;
 	private String firstname;
 	private String surname;
-	@ManyToMany(mappedBy = "actors")
-    private List<Movies> movies;
-
-	public Actors() {
-	}
-	
-	public Actors(ActorsBuilder builder) {
-        this.firstname = builder.getFirstname();
-        this.surname = builder.getSurname();
-	}
 
 	public String getFirstName() {
 		return firstname;

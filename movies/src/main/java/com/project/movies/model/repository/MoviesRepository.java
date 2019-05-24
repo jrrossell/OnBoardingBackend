@@ -8,6 +8,6 @@ import com.project.movies.model.entity.Movies;
 public interface MoviesRepository extends JpaRepository<Movies, Integer>{
 	
 	@Query("SELECT m FROM Movies m WHERE m.title = ?1 and m.year = ?2")
-	Movies findMovie(String title, String year);
+	Movies findMovieBD(String title, String year);
 	
 }

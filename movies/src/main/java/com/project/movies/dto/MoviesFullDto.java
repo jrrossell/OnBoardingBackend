@@ -2,7 +2,6 @@ package com.project.movies.dto;
 
 import java.util.List;
 
-//extender de moviesDto
 public class MoviesFullDto extends MoviesTitleYearDto {
 
 	private static final long serialVersionUID = 1L;

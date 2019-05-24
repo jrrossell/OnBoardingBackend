@@ -26,30 +26,30 @@ public class MoviesServiceImpl implements MoviesService {
 	@Autowired
 	public MoviesServiceImpl(MoviesRepository repository, ActorsRepository actorsRepository) {
 		this.moviesRepository = repository;
-		this.actorsRepository = actorsRepository;
+		this.actorsRepository = actorsRepository; 
 	}
 
-	public List<MoviesTitleYearDto> listMovies() {
-		List<Movies> movies = moviesRepository.findAll();
-
-		return movies.stream().map(TransformMovies::movieToDtoTitleYear).collect(Collectors.toList());
+	public List<MoviesTitleYearDto> listMovies() { 
+		return moviesRepository.findAll()
+								.stream()
+								.map(TransformMovies::movieToDtoTitleYear)
+								.collect(Collectors.toList());
 	}
 	
 	public MoviesFullDto showMovie(Integer id) throws MovieNotFound {
-		Movies movie = moviesRepository.findById(id).orElseThrow(() -> new MovieNotFound());
-
-		return TransformMovies.movieToFullDto(movie);
+		return moviesRepository.findById(id)
+								.map(TransformMovies::movieToFullDto)
+								.orElseThrow(() -> new MovieNotFound());
 	}
 
 	public Movies addMovie(Movies movie) throws MovieRepeat {
-		Movies movieBD = moviesRepository.findMovie(movie.getTitle(), movie.getYear());
+		Movies movieBD = moviesRepository.findMovieBD(movie.getTitle(), movie.getYear());
 		if (movieBD != null) throw new MovieRepeat();
 			
 		movie.setActors(movie.getActors().stream().map(actor -> {
 			Actors actorBD = actorsRepository.verifyActorBD(actor.getFirstName(), actor.getSurname());
-			if (actorBD == null) {
+			if (actorBD == null)
 				return actorsRepository.save(new ActorsBuilder().firstname(actor.getFirstName()).surname(actor.getSurname()).build());
-			}
 			return actorBD;
 		}).collect(Collectors.toList()));
 		return moviesRepository.save(movie);

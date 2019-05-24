@@ -12,9 +12,6 @@ public class MoviesBuilder {
 	private String gender;
 	private String year;
 	private List<Actors> actors;
-	
-	public MoviesBuilder() {
-	}
 
 	public MoviesBuilder id(int id) {
 		this.id = id;
@@ -40,50 +37,36 @@ public class MoviesBuilder {
 		this.actors = actors;
 		return this;
 	}
-	
-	public Movies build() {
-        return new Movies(this);
-    }
 
 	public int getId() {
 		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getTitle() {
 		return title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-
 	public String getGender() {
 		return gender;
 	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
-
+	
 	public String getYear() {
 		return year;
-	}
-
-	public void setYear(String year) {
-		this.year = year;
 	}
 
 	public List<Actors> getActors() {
 		return actors;
 	}
-
-	public void setActors(List<Actors> actors) {
-		this.actors = actors;
-	}
 	
+	public Movies build() {
+		Movies movie = new Movies();
+		movie.setId(this.id);
+		movie.setTitle(this.title);
+		movie.setGender(this.gender);
+		movie.setYear(this.year);
+		movie.setActors(this.actors);
+		
+        return movie;
+    }
 	
 }

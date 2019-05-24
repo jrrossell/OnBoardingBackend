@@ -9,5 +9,6 @@ public interface ActorsRepository extends JpaRepository<Actors, Integer> {
 	
 	@Query("SELECT a FROM Actors a WHERE a.firstname = ?1 and a.surname = ?2")
 	Actors verifyActorBD(String firstname, String Surname);
+
 }
 
